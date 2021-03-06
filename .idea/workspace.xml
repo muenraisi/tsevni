@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="afbbcb26-718c-413a-93d6-fef8dd4498b3" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="afbbcb26-718c-413a-93d6-fef8dd4498b3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/invest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/invest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,13 +21,22 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="NamedScopeManager">
     <scope name="local" pattern="file[invest]:.idea/*||file[invest]:.ipynb_checkpoints/*||file[invest]:account/*||file[invest]:data/*||file[invest]:data_api/*||file[invest]:MrCrawl/*||file:bank.csv||file:bank_model.py||file:Get3Data1.xls||file:lxml-4.5.2-cp38-cp38-win_amd64.whl||file:netvalue.py||file:plot_stock.py||file:result.txt||file:test.py||file:test.xls||file:test_index.py||file:Untitled.ipynb||file:成长股估值.ipynb||file:房地产.ipynb||file:煤炭.ipynb||file:电器.ipynb||file:钢铁.ipynb||file:银行.ipynb" />
   </component>
   <component name="ProjectId" id="1VFT2fqzoe5DXICzmfaHzTopsLv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test_index.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -35,18 +47,6 @@
       <recent name="C:\Users\shuai\PycharmProjects\invest\data\statement\me\2020" />
       <recent name="C:\Users\shuai\PycharmProjects\invest\data\delivery" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.randomwalk">
     <configuration name="convert_bond" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -197,13 +197,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.plot_stock" />
-      <item itemvalue="Python.test_index" />
+      <item itemvalue="Python.convert_bond" />
       <item itemvalue="Python.fundmental" />
+      <item itemvalue="Python.plot_stock" />
+      <item itemvalue="Python.randomwalk" />
       <item itemvalue="Python.stock_finance" />
       <item itemvalue="Python.test" />
-      <item itemvalue="Python.convert_bond" />
-      <item itemvalue="Python.randomwalk" />
+      <item itemvalue="Python.test_index" />
     </list>
     <recent_temporary>
       <list>
@@ -215,6 +215,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>

@@ -7,10 +7,10 @@ import math as math
 
 
 def simple_random_walk():
-    N = 1000
+    N = 10000
     value = 1
     x = np.arange(0, N)
-    y = [0]
+    y = [1]
     z = [10]
     momentum = 0
     delta = 0
@@ -22,7 +22,8 @@ def simple_random_walk():
         else:
             momentum = 0
         delta = random.gauss(0,.03333)
-        # if delta >0.1:
+        # delta = (random.randint(0,1)*2 -1)* 0.1
+        # if delta >0.1:z
         #     delta=0.1
         # elif delta<-0.1:
         #     delta=-0.1
@@ -39,20 +40,20 @@ def simple_random_walk():
             if rational > 0.8:
                 rational = 0.8
             rise = delta
-        y.append(y[-1] +rise)
+        y.append(y[-1] * (1+rise))
         # y.append(y[-1]+delta*0.1+momentum*0.06)
         # z.append(z[-1] + delta * 0.1 )
 
-    # plt.plot(x, y)
-    # plt.yscale('log')
-    #
-    #
-    # plt.show()
+    plt.plot(x, y)
+    plt.yscale('log')
+
+
+    plt.show()
     return y[-1]
 
 res=[]
 P=1.
-for i in range(1000):
+for i in range(1):
     r=simple_random_walk()
     print(i,r)
     res.append(r)

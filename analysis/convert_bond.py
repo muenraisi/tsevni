@@ -1,5 +1,42 @@
 import akshare as ak
 import common.print
+import datetime
+import pandas as pd
+
+CORPORATE_BOND_LABEL = ['国债', '有担保企业债(AAA+)', '有担保企业债(AAA)', '企业债(AAA-)', '有担保企业债(AA+)', '有担保企业债(AA)', '有担保企业债(AA-)',
+                        '无担保企业债(AAA(2))', '无担保企业债(AA+(2))', '无担保企业债(AA(2))', '无担保企业债(AA-(2))', '企业债(A+)', '企业债(A)',
+                        '企业债(A-)', '企业债(BBB+)',
+                        '企业债(BBB)', '企业债(BB)', '企业债(B)']
+
+
+def get_all_corporate_bond_rate():
+    today=datetime.datetime.today()
+    trade_date = list(ak.tool_trade_date_hist_sina()["trade_date"])
+    # print(trade_date)
+    while today.strftime("%Y-%m-%d") not in trade_date:
+        today = today - datetime.timedelta(days=1)
+    last_trade_day = today.strftime("%Y-%m-%d")
+    # print(last_trade_day)
+    dfs=[]
+    for label in CORPORATE_BOND_LABEL:
+        bond_rate = ak.bond_china_close_return(symbol=label, start_date=last_trade_day, end_date=last_trade_day)
+        bond_rate.set_index("期限",inplace=True)
+        bond_rate.drop(columns=['日期','到期收益率','远期收益率'],inplace=True)
+        bond_rate.rename(columns={"即期收益率": label}, inplace=True)
+        dfs.append( bond_rate)
+    res = pd.concat(dfs, join='outer', axis=1)
+    return res
+
+
+def get_map_bond(issuer_rating_cd, guarantor=""):
+    if issuer_rating_cd in ['A+', 'A', 'A-', 'BBB+', 'BBB', 'BB', 'B']:
+        return '企业债(' + issuer_rating_cd + ')'
+    else:
+        if guarantor != "":
+            return '有担保企业债(' + issuer_rating_cd + ')'
+        else:
+            return '无担保企业债(' + issuer_rating_cd + '(2))'
+
 
 '''
     bond_id   bond_nm  stock_id  stock_nm btype convert_price convert_price_valid_from  convert_dt maturity_dt 
@@ -64,17 +101,16 @@ import common.print
       有效期：-        127003；2016-12-16 开始转股           全价：101.810 最后更新：15:00:03  
 '''
 
-
 if __name__ == '__main__':
     print("")
     bond_convert_jsl_df = ak.bond_cov_jsl()
 
     # filter
     bond_convert_jsl_df = bond_convert_jsl_df[bond_convert_jsl_df["btype"] == "C"]  # 删除仅合格投资者可购买，这项为E
-    # bond_convert_jsl_df.drop(
-    #     ["btype", "convert_price_valid_from", "convert_dt", "next_put_dt", "put_dt", "put_notes", "put_price"], axis=1,
-    #     inplace=True)
-    bond_convert_df = bond_convert_jsl_df[["bond_nm", "rating_cd", "issuer_rating_cd", "ytm_rt", "ytm_rt_tax","year_left","premium_rt"]]
+    # bond_convert_jsl_df.drop( ["btype", "convert_price_valid_from", "convert_dt", "next_put_dt", "put_dt",
+    # "put_notes", "put_price"], axis=1, inplace=True)
+    bond_convert_df = bond_convert_jsl_df[
+        ["bond_nm", "rating_cd", "issuer_rating_cd", "ytm_rt", "ytm_rt_tax", "year_left", "premium_rt"]]
     bond_convert_df['ytm_rt'] = bond_convert_df['ytm_rt'].str.rstrip('%').replace('-', '-100', regex=False).astype(
         'float')
     bond_convert_df['ytm_rt_tax'] = bond_convert_df['ytm_rt_tax'].str.rstrip('%').replace('-', '-100',
@@ -82,4 +118,10 @@ if __name__ == '__main__':
     bond_convert_df.sort_values(by=["ytm_rt_tax"], inplace=True, ascending=False)
 
     # print(bond_convert_df[bond_convert_df["bond_nm"]=="亚药转债"])
-    print(bond_convert_df.head(10))
+    # print(bond_convert_df.head(10))
+
+    df_bond_rate = get_all_corporate_bond_rate()
+    print(df_bond_rate)
+    # for key, item in bond_rate_dict.items():
+    #     print(key, item)
+    df_bond_rate

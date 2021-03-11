@@ -4,8 +4,6 @@ import random
 import math as math
 
 
-
-
 def simple_random_walk():
     N = 10000
     value = 1
